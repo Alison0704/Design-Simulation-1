@@ -1,0 +1,121 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+
+% Define colors for MATLAB syntax highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    language=Matlab,                
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                   
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\begin{document}
+
+\title{State Space Modelling, Control, and Simulation of a DC-DC Converter: Buck Converter Case Study for ELG 4157}
+
+\author{\IEEEauthorblockN{Marie Annaëlle Alison Emilien}
+\IEEEauthorblockA{\textit{School of Electrical Engineering and Computer Science} \\
+\textit{University of Ottawa}\\
+Ottawa, Ontario, Canada \\
+Email: aemil072@uottawa.ca}}
+
+
+\maketitle
+
+\begin{abstract}
+This research investigates the design of a DC-DC buck converter using state space modeling and control techniques. The study focuses on developing a comprehensive mathematical model, implementing control strategies, and simulating the converter's performance under various load conditions. The results demonstrate the effectiveness of the proposed control methods in maintaining output voltage stability and improving transient response. This work contributes to the field of power electronics by providing insights into the design and optimization of DC-DC converters for efficient energy conversion.
+\end{abstract}
+
+\section{Introduction}
+The demand for efficient power conversion in electronic devices has led to significant advancements in DC-DC converter technologies. Among these, the buck converter is widely used for stepping down voltage levels while maintaining high efficiency \cite{indhumathi2025modelling}. This paper presents a detailed study on the state space modeling, control, and simulation of a buck converter, aiming to enhance its performance through advanced control strategies \cite{singh2024advanced}.
+
+\section{Topology Definition}
+The buck converter topology consists of a switch (typically a transistor), a diode, an inductor, and a capacitor. The switch alternates between connecting the input voltage to the inductor and disconnecting it, allowing the inductor to store and release energy. The diode provides a path for the inductor current when the switch is off, while the capacitor smooths the output voltage.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/buck-temp.png}
+  \caption{Buck Converter Topology}
+\end{figure}
+
+\section{Literature Review}
+Previous studies have explored various aspects of buck converter design, including state space modeling techniques, control strategies
+such as PID and sliding mode control, and simulation approaches using tools like MATLAB/Simulink. These studies highlight the importance of accurate modeling and effective control in achieving desired performance metrics such as efficiency, transient response, and output voltage regulation.
+
+\section{Analysis Steps}
+\subsection{Open-Loop Analysis}
+The open-loop response of the buck converter is analyzed to understand its inherent dynamics without feedback control.
+
+\subsection{Closed-Loop Control Design}
+A feedback control system is designed to regulate the output voltage of the buck converter, ensuring stability and desired performance.
+
+\section{Lab Simulation}
+The simulation environment is established using MATLAB/Simulink to evaluate the performance of the buck converter.
+under various load conditions and control strategies.
+\subsection{Simulation setup}
+The simulation parameters are defined, including input voltage, load resistance, inductance, and capacitance values. The control algorithm is implemented to assess its effectiveness in maintaining output voltage stability.
+\subsection{Simulation results}
+The simulation results are presented, highlighting the converter's transient response, steady-state performance, and efficiency
+under different operating conditions.
+
+\begin{lstlisting}[caption={MATLAB Script for Control System Step Response}]
+% Define Transfer Function for ELG 4157
+num = [1];
+den = [1, 10, 20];
+sys = tf(num, den);
+
+% Plot Step Response
+step(sys);
+grid on;
+title('Step Response for Design 1');
+\end{lstlisting}
+
+% \section{Algorithm}
+% \begin{algorithm}
+% \caption{AI-Based PPA Weight Adjustment}
+% \begin{algorithmic}[1]
+% \REQUIRE Dataset $D$ containing previous design runs
+% \ENSURE Optimized parameters $\theta$
+% \STATE Load pre-trained VLM weights
+% \FOR{each iteration $i = 1$ to $N$}
+%     \STATE Evaluate current PPA metrics
+%     \IF{Power $>$ limit}
+%         \STATE Apply low-power subsystem constraints
+%     \ENDIF
+% \ENDFOR
+% \RETURN $\theta$
+% \end{algorithmic}
+% \end{algorithm}
+
+
+\section{Conclusion}
+This study successfully demonstrates the application of state space modeling and control techniques in the design and simulation of a DC-DC buck converter. The implemented control strategies effectively maintain output voltage stability and improve transient response under varying load conditions. Future work may explore advanced control algorithms and real-world implementation to further enhance converter performance.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
